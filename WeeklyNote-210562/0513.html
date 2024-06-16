@@ -1,0 +1,31 @@
+<html>
+<head>
+
+  
+  <script>
+    function get(id){
+      return document.getElementById(id);
+    }
+    function playbgm(){
+      get("bgm").play();
+    }
+    function stopbgm(){
+      get("bgm").pause();
+    }
+
+    
+  </script>
+</head>
+<body>
+  <audio controls loop>//controls有撥放建 loop重複撥放
+    <source src="檔名.副檔名">
+  </audio>
+    <button onclick="playbgm();">播放</button>
+    <button onclick="stopbgm();">播放</button>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<html>
+<head>
+  <style>
+    #assistant{
+      width:240px;
+      height:85px;
+      top:515px;
+      left:750px;
+      border:0px solid black;
+      position:absolute;
+      background:white;
+    }
+    #whitething{
+      width:128px;
+      height:500px;
+      background:white;
+      top:0px;
+      left:900px;
+      border-left:2px solid black;
+      position:absolute;
+    }
+    #whitething2{
+      width:128px;
+      height:300px;
+      background:white;
+      top:0px;
+      left:-130px;
+      border-right:2px solid black;
+      position:relative;
+    }
+    #scborder{
+      font-family: 標楷體;
+      font-size: 200%;
+      width:200px;
+      height:40px;
+      border:1px solid black;
+      top:14px;
+      left:478px;
+      background:white;
+      display:block;
+      position:absolute;
+    }
+    #button1{
+      font-family: serif;
+      font-size: 150%;
+      width:120px;
+      height:80px;
+      top:5;
+      left:518px;
+      background:white;
+      display:block;
+      position:relative;
+    }
+    #b1{
+      left:128px;
+      width:900px;
+      height:500px;
+      border:2px solid black;
+      position:relative;
+    }
+    
+    #smile1{
+      width:64px;
+      height:64px;
+      border:0px solid red;
+      top:200px;
+      left:200px;
+      background:url(smile.png);
+      position:relative;
+      display:block;
+
+      background-position-x:0px;
+      background-position-y:0px;
+      animation:smove 0.45s steps(3) infinite;
+     
+    }
+    @keyframes smove{
+      0%{background-position-x:0px;}
+      100%{background-position-x:-192px;}
+     }
+
+    #smile2{
+    width:64px;
+    height:64px;
+    border:0px solid blue;
+    top:200px;
+    left:200px;
+    background:url(smilejump.png);
+    position:relative;
+    display:none;
+      
+    background-position-x:0px;
+    background-position-y:0px;
+    animation:sjump 1.05s steps(7) infinite;
+    }
+    @keyframes sjump{
+      0%{background-position-x:0px;}
+      100%{background-position-x:-448px;}
+    }
+
+    #runner{
+      width:100px;
+      height:100px;
+      border:0px solid green;
+      top:100px;
+      left:500px;
+      background:url(tree.png);
+      position:relative;
+      display:block;/*none*/
+      background-size:650px; /*800原*/
+
+      background-position-x:-206px;/*256原*/
+      background-position-y:0px;
+      animation:face 0.2s steps(2) ;
+    }
+    @keyframes face{
+      0%{background-position-x:-206px;}
+      100%{background-position-x:-518px;}
+    }
+
+    
+    
+    
+
+    
+</style>
+<script>
+  var pos={x:200,y:200};
+  var mo=0;
+  var Rpos={x:925,y:100};
+  var treemo=1;
+  var sc=0;
+  var hit=0;
+  var GS=0;
+
+
+  function getRnd(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+  }
+
+  
+  function get(id){
+    return document.getElementById(id);
+  }
+
+  
+    
+  function mykey(ev){
+    ev.preventDefault();
+
+    if(ev.key == "ArrowUp" && mo==0 && hit==0){
+      mo=1;
+      get("smile1").style.display="none";
+      get("smile2").style.display="block";
+      get("smile2").style.animationPlayState="running";
+      
+      setTimeout(function(){
+        get("smile1").style.display="block";
+        get("smile2").style.display="none";
+        get("smile1").style.animationPlayState="running";
+        mo=0;
+        get("smile1").style.top=200;
+        get("smile2").style.top=200;
+      },1050);
+      
+    if(hit == 0){
+      var t1=setInterval(function(){
+        pos.y-=45;//17---25
+        get("smile1").style.top=pos.y+"px";
+        get("smile2").style.top=pos.y+"px";
+
+        if(pos.y<=110){//149 200-17*3---125
+        clearInterval(t1);
+          var t3=setInterval(function(){
+            pos.y-=10;
+            if(pos.y<=100){//---150
+            clearInterval(t3);
+              var t2=setInterval(function(){
+                pos.y+=25;//15---20
+                get("smile1").style.top=pos.y+"px";
+                get("smile2").style.top=pos.y+"px";
+
+                if(pos.y>=175){//194 149+15*3---175
+                pos.y=200;
+                get("smile1").style.top=pos.y+"px";
+                get("smile2").style.top=pos.y+"px";
+                clearInterval(t2);
+                
+                }
+              },150);
+            }
+          },150);
+        }
+      },150);
+    }
+      
+           
+      }else if(ev.key == " "){
+        start();
+      }
+      
+    
+      get("smile1").style.top=pos.y+"px";
+      get("smile2").style.top=pos.y+"px";
+  }
+
+//  var t8=setTimeout(function(){
+//  var IntervalTimeSetting;
+  var HiddenCounter = 0;
+
+ //   var tt = setInterval(function(){
+    //  if(treemo == 1){
+     // treemo=0;
+      
+//        setTimeout(function(){
+
+    //         get("runner").style.display="block";
+  function start(){
+    get("runner").style.animationPlayState="paused";
+    if(GS == 0){
+    GS=1;
+    hit=0;
+    sc=0;
+    get("smile2").style.animationPlayState="running";
+    get("smile1").style.animationPlayState="running";
+  
+    Rpos={x:925,y:100};
+    get("button1").style.display="none";
+  var treetime = setInterval(function(){
+      if(HiddenCounter != 0){
+        HiddenCounter--;
+      }else{
+        if (Rpos.x <= 225 && Rpos.x >= 175 && pos.y >= 150){
+          clearInterval(treetime);
+          get("button1").style.display="block";
+//          get("runner").style.animationPlayState="running";
+          
+          
+          
+          hit=1;
+          GS=0;
+          get("smile2").style.animationPlayState="paused";
+          get("smile1").style.animationPlayState="paused";
+        }
+        
+        
+        get("runner").style.display="block";
+        Rpos.x-=25;
+        get("runner").style.left=Rpos.x+"px";
+
+        if(Rpos.x<=-100){//36+2步
+            Rpos.x = 925;
+              //  get("runner").style.left=600+"px";
+            get("runner").style.display="none";
+           
+          
+          HiddenCounter = getRnd(0,3) *10;
+          
+          
+        
+      }
+  
+
+    
+
+              
+            //  clearInterval(treetime);
+            //  treemo=1;
+            //  y=getRnd(2,3);
+
+
+      } // if(Rpos.x<=-50)
+  },100) // var treetime = setInterval(function()
+//        },y*1000)
+    
+        
+     // } //  if(treemo == 1)
+//    },trnd * 1000+380)
+  
+//  },y*1000+3800)
+    
+    setInterval(function(){
+    if(hit == 0){
+      sc++;
+      document.getElementById('input').innerHTML = sc ;//sc
+      }
+    },125)
+    }
+  }
+
+    
+    
+  
+  </script>
+</head>
+
+<body onkeydown="mykey(event);">
+  <div id="b1">
+    <div id="smile1"></div>
+    <div id="smile2"></div>
+    <div id="runner"></div>
+    <div id="whitething"></div>
+    <div id="whitething"></div>
+    <div id="whitething2"></div>
+  </div>
+  <button onclick="start();" id="button1" >Game Start</button>
+  <div id="scborder">Score:<span id="input"></span></div>
+  <div id="assistant">方向鍵⬆-----跳<br>空白鍵 or 點擊Start-----開始遊戲</div>
+
+  
+
+
+
+</body>
+</html>

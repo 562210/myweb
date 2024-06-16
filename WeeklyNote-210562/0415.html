@@ -1,0 +1,104 @@
+<html>
+<head>
+  <style>
+    #board{
+      display:grid;/*格線*/
+      grid:80px 80px 80px / 80px 80px 80px 80px ;/*列高/欄寬*/
+      grid: repeat(3, 85px) / repeat(4,85px) ;
+    }
+    
+  </style>
+  
+  <script>
+  function get(id){
+    return document.getElementById(id);
+  }
+  function getRnd(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;//Math.random 0到1之間的小數
+  }
+
+  function gets(qs){
+    return Array.from(document.querySeletorAll(qs));
+  }
+
+  function gameStart(){
+    get("btnStart").style.display="none";
+    cards=[1,1,2,2,3,3,4,4,5,5,6,6];
+    cards.sort(function(){return Math.random()-0.5});//排整齊(預設遞增)//card.sort負數在前面(-0.5有一半會是負數)
+    imgs=gets("img");
+    
+    imgs.forEach(function(a,i){
+      img[i].src="pic/"+cards[i]+".png";
+    });
+    
+/*    gets("img").forEach(function(a,i){
+      img[i].src="pic/"+cards[i]+".png";
+    });
+*/    
+    setTimeout(function(){
+      gets("img").forEach(function(a){
+        a.src="pic/0.png";
+      });
+      
+    },3000);
+    game_started=true;
+    p1=-1;p2=-1;
+  }
+    
+    function hit(idx){
+      if(p1==-1){
+        p1=idx;
+        img[idx].src="pic/"+cards[idx]+".png";
+        return;
+      }
+      if(p1==idx) return;
+      if(p2==-1){
+        p2=idx;
+        img[idx].src="pic/"+cards[idx]+".png";
+        if(cards[p1]==card[p2]){
+          p1=-1;p2=-1;
+          return;
+        }
+        setTimeout(function(){
+          imgs[p1].src="pic/0.png";
+          imgs[p2].src="pic/0.png";
+          p1=-1;p2=-1;
+        },1000);
+      }
+    }
+
+
+    
+  
+
+    
+  </script>
+
+
+
+
+</head>
+
+<body>
+  <div id="board">
+    <img src="0.png" onclick="hit(0);">
+    <img src="0.png" onclick="hit(1);">
+    <img src="0.png" onclick="hit(2);">
+    <img src="0.png" onclick="hit(3);">
+    <img src="0.png" onclick="hit(4);">
+    <img src="0.png" onclick="hit(5);">
+    <img src="0.png" onclick="hit(6);">
+    <img src="0.png" onclick="hit(7);">
+    <img src="0.png" onclick="hit(8);">
+    <img src="0.png" onclick="hit(9);">
+    <img src="0.png" onclick="hit(10);">
+    <img src="0.png" onclick="hit(11);">
+  </div>
+  <button id="btnStart" onclick="gameStart();">開始</button>
+
+
+
+
+
+</body>
+</html>
