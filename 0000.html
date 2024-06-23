@@ -1,0 +1,101 @@
+<html>
+<head>
+  <style>
+    #s1{
+      width:64px;
+      height:64px;
+      border:1px solid black;
+      top:100px;
+      left:100px;
+      position:relative;
+      
+      animation:s12 1s steps(3) infinite
+    }
+    @keyframes s12{
+      0%{background-color:lightred;}
+      50%{background-color:lightblue;}
+      100%{background-color:lightyellow;}
+    }
+
+    
+    #c1{
+      width:48px;
+      height:72px;
+      top:100px;
+      left:100px;
+      border:1px solid red;
+      background:url(rpgmaker1.png);
+      position:relative;
+      animation:cw1 1s steps(3) infinite;
+    }
+    @keyframes cw1{
+    0%{background-position-x:0px;}
+    100%{background-position-x:-153px;}/*613/4*/
+
+    #smile1{
+      width:64px;
+      height:64px;
+      border:1px solid red;
+      top:200px;
+      left:200px;
+      background:url(slime.png);
+      position:relative;
+    }
+    
+
+    
+    
+
+
+
+    
+  </style>
+  <script>
+    var pos={x:100,y:100};
+
+      function mmm(){
+        cw1.animationPlayState="paused";
+      }
+     
+        function get(id){
+          return document.getElementById(id);
+          
+        }
+          function mykey(ev){
+            ev.preventDefault();/*把預設的行為關掉*//*把mykey放body,因這行把所有鍵盤事件(F5)失效*/
+            var c1Y="0px";
+      			
+
+            if(ev.key == "ArrowDown"){
+//              c1.animationPlayState="running";
+              pos.y+=5;
+            }else if(ev.key == "ArrowLeft"){
+              
+              pos.x-=5;
+            }else if(ev.key == "ArrowRight"){
+              
+              pos.x+=5;
+            }else if(ev.key == "ArrowUp"){
+ //             c1.animationPlayState="running";
+              pos.y-=5;
+            }
+            
+            get("c1").style.top=pos.y+"px";
+            
+          }
+
+
+  </script>
+</head>
+
+<body onkeydown="mykey(event);">
+  <div id="c1" ></div>
+  <button onclick="mmm"></button>
+  <div id="smile1"></div>
+
+
+
+
+
+</body>
+</html>

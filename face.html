@@ -1,0 +1,355 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>11823 李美玉 210562</title>
+  <style>
+    #face {
+      margin:50px;
+      text-align:center;/*置中*/
+      width:90px;
+      height:120px;
+      background:#FFD3A8;
+      border-radius:54% 46% 52% 48% / 82% 0% 100% 
+      18% ;
+      position:relative;
+      top:10px;
+      margin:0px;
+      margin-left:10px;
+      
+    }
+    #face2 {
+      margin:50px;
+      text-align:center;/*置中*/
+      width:90px;
+      height:120px;
+      background:#FFD3A8;
+      border-radius:52% 48% 54% 46% / 0% 82% 18% 
+      100% ;/*鏡像反轉*/
+
+    }
+    #earr{
+      width:190px;
+      height:500px;
+    }
+    
+    .ear {
+      text-align:center;/*置中*/
+      width:100px;
+      height:150px;
+      border: 2px solid black;
+      border-color:black;
+      background:#784d38;
+      border-radius:68% 32% 53% 47% / 85% 0% 100% 
+      15% ;/*rotate:180deg的角度*/
+      position: absolute;
+      top:-97px;
+      left:-60px;
+      rotate:20deg;
+      animation:rab 2s infinite linear;
+    }
+    .ear2{
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+      border-right-color:black;
+      border-top-color:transparent;
+      border-left-color:transparent;
+      border-bottom-color:transparent;
+      background-color:#784d38;
+      position: absolute;
+      top:-65px;
+      left:31px;
+      rotate:-30deg;
+      
+    }
+    .ear-none{
+      text-align:center;/*置中*/
+      width:90px;
+      height:150px;
+      border: 2px solid black;
+      border-color:transparent;
+      background:transparent;
+      border-radius:68% 32% 53% 47% / 85% 0% 100% 
+      15% ;/*rotate:180deg的角度*/
+    }
+    .ear3 {
+      text-align:center;/*置中*/
+      width:100px;
+      height:150px;
+      border: 2px solid black;
+      border-color:black;
+      background:#784d38;
+      border-radius:53% 47% 68% 32% / 0% 85% 15% 
+      100% ;/*rotate:180deg的角度*/
+      position: absolute;
+      top:-97px;
+      right:-60px;
+      rotate:-20deg;
+      animation:rab2 2s infinite linear;
+    }
+    .ear4{
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+      border-left-color:black;
+      border-top-color:transparent;
+      border-right-color:transparent;
+      border-bottom-color:transparent;
+      background-color:#784d38;/*#ffc4c6*/
+      position: absolute;
+      top:-65px;
+      right:31px;
+      rotate:30deg;
+      
+    }
+    
+    .face{
+      width:250px;
+      height:250px;
+      border: 2px solid black;
+      border-color:black;
+      background:#ffe7d9;
+      border-radius:50%;
+      position: relative;
+      left:50px;
+      top:10px;
+      margin-top:10px;
+      margin-left:50px;
+    }
+    
+    .eye{
+      width:100px;
+      height:110px;
+      border: 2px solid black;
+      border-color:black;
+      background:#ffffff;
+      border-radius:50%;
+      position: absolute;
+      top:55px;
+      right:15px;
+      display:inline-block;
+    }
+    .eye-l{
+      width:100px;
+      height:110px;
+      border: 2px solid black;
+      border-color:black;
+      background:#ffffff;
+      border-radius:50%;
+      position: absolute;
+      top:55px;
+      left:15px;
+      display:inline-block;
+    }
+    .eyeball{
+      width:50px;
+      height:60px;
+      background:black;
+      border-radius:50%;
+      position: absolute;
+      top:30px;
+      left:5px;
+      display:inline-block;
+      animation:b1 2s infinite linear;
+    }
+    .eyeball-l{
+      width:50px;
+      height:60px;
+      background:black;
+      border-radius:50%;
+      position: absolute;
+      top:30px;
+      right:5px;
+      display:inline-block;
+      animation:b1 2s infinite linear;
+    }
+    
+    .nose{
+      width: 0px;
+      height: 0px;
+      border: 20px solid black;
+      border-color:#f5b8d0;/*#f5b8d0*/
+      border-bottom-width: 0px;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      position: absolute;
+      top:157px;
+      right:106px;
+      display:inline-block;
+      animation:n1 2s infinite linear;
+    }  
+
+    .mouth{
+      width: 30px;
+      height: 0px;
+      border: 1px solid black;
+      border-color: black;
+      position: absolute;
+      top:190px;
+      right:110px;
+      rotate:5deg;
+      display:inline-block;
+      animation:m1 2s infinite linear;
+    }
+
+    .hair{
+      text-align:center;/*置中*/
+      width:50px;
+      height:90px;
+      border: 2px solid black;
+      border-color:black;
+      border-right-color:transparen;
+      background:#d99879;
+      border-radius:100% 0% 12% 88% / 21% 0% 100% 79% ;
+      position: absolute;
+      top:-30px;
+      right:110px;
+      rotate:-15deg;
+    }
+    .hair2{
+      text-align:center;/*置中*/
+      width:130px;
+      height:100px;
+      border: 2px solid black;
+      border-color:black;
+      border-left-color:transparent;
+      background:#d99879;
+      border-radius:0% 100% 0% 100% / 45% 0% 100% 55% ;
+      position: absolute;
+      top:-30px;
+      right:-5px;
+      rotate:7deg;
+    }
+    .hair3{
+      text-align:center;/*置中*/
+      width:50px;
+      height:300px;
+      border: 2px solid black;
+      border-color:black;
+      background:linear-gradient(0deg,#a35452, #d99879 75%);
+      border-radius:0% 100% 0% 100% / 0% 100% 0% 100%  ;
+      position: absolute;
+      top:-10px;
+      right:-38px;
+      rotate:5deg;
+    }
+    .hair4{
+      text-align:center;/*置中*/
+      width:150px;
+      height:110px;
+      border: 2px solid black;
+      border-color:black;
+      background:#d99879;
+      border-radius:100% 0% 100% 0% / 100% 0% 100% 0%   ;
+      position: absolute;
+      top:-10px;
+      left:-50px;
+      rotate:-20deg;
+    }
+    .hair5{
+      text-align:center;/*置中*/
+      width:50px;
+      height:300px;
+      border: 2px solid black;
+      border-color:black;
+      background:linear-gradient(0deg,#a35452, #d99879 75%);
+      border-radius:100% 0% 100% 0% / 100% 0% 100% 0%   ;
+      position: absolute;
+      top:-10px;
+      left:-40px;
+      rotate:-5deg;
+    }
+    .hair6{
+      width: 200px;
+      height: 200px;
+      border: 50px solid black;
+      border-bottom-width: 0px;
+      border-top-left-radius: 2000px 2000px;
+      border-top-right-radius: 2000px 2000px;
+      border-color: #d99879;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      position: absolute;
+      top:-70px;
+      right:-25px;
+      display:inline-block;
+    }
+
+    @keyframes rab {
+      0%{transform:rotate(0deg) ;}
+      50%{transform:rotate(0deg) ;}
+      95%{transform:rotate(8deg) ;}
+      98%{transform:rotate(-10deg) ;}
+      100%{transform:rotate(3deg) ;}
+    }
+    @keyframes rab2 {
+      0%{transform:rotate(-0deg) ;}
+      50%{transform:rotate(-0deg);}
+      95%{transform:rotate(-8deg);}
+      98%{transform:rotate(10deg);}
+      100%{transform:rotate(-3deg);}
+    }
+    @keyframes b1 {
+      0%{transform:translate(0px,0px) ;}
+      50%{transform:translate(0px,-5px);}
+      90%{transform:translate(0px,-8px);}
+      98%{transform:translate(0px,2px);}
+      100%{transform:translate(0px,0px));}
+    }
+    @keyframes m1 {
+      0%{transform:translate(0px,0px) ;}
+      50%{transform:translate(0px,-1px);}
+      90%{transform:translate(0px,-2px);}
+      98%{transform:translate(0px,0.5px);}
+      100%{transform:translate(0px,0px));}
+    }
+    @keyframes n1 {
+      0%{transform:translate(0px,0px) ;}
+      50%{transform:translate(0px,0px);}
+      90%{transform:translate(0px,0px);}
+      98%{transform:translate(0px,0.2px);}
+      99%{transform:translate(0px,0.5px);}
+      100%{transform:translate(0px,0px));}
+    }
+ 
+
+   </style>
+</head>
+
+<body>
+  
+  <div class="ear-none"></div>
+  
+  <div class="face">
+    <div class="eye"><div class="eyeball"></div>
+    </div>
+    <div class="eye-l"><div class="eyeball-l"></div>
+    </div>
+    <div class="nose"></div>
+    <div class="mouth"></div>
+    
+    <div class="hair"></div>
+    <div class="hair2"></div>
+    <div class="hair3"></div>
+    <div class="hair4"></div>
+    <div class="hair5"></div>
+    <div class="ear2"></div>
+    <div class="ear4"></div>
+    <div class="hair6"></div>
+
+    <div class="ear">
+    </div>
+    <div class="ear3">
+    </div>
+
+
+
+  </div>
+
+  
+
+
+
+
+</body>
+</html>

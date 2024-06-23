@@ -1,0 +1,125 @@
+<html>
+<head>
+  <script>
+  function get(id){//自訂函式
+    return document.getElementById(id);
+  }
+  function getRnd(min,max){//生成亂數
+    Math.floor(Math.random()*(max-min+1))+min;
+  }
+
+  function start_timer(){
+//		var time=30*100;/*var是宣告變數，但會只有這個{}裡的東西能用*/
+    time=30*100;
+//		setTimeout(function(){//匿名含式(只跑在背景)(有固定的長度的,以毫秒計(3000毫秒為3秒)
+//		alert=("時間到");
+//		},3000;
+
+    t1=setInterval(function(){
+      time--;/*加1的意思*/
+      sec=Math.floor(time/100);/*html的除法是正常的除法*/
+      time=time%100;
+      time_str="0"+sec;
+      if(time<0) stop_timer();
+        sec=Math.floor(time/100);
+
+      if(sec<10){
+        time_sre="0"+sec;
+      }else {
+        time_str=sec;
+      }
+
+      if((time%100)<10){
+        time_str=time_str+"'0"+(time%100);
+      }else {
+        time_str=time_str+"'"+(time%100);
+      }
+
+      get("time").innerHTML=time_str;/*++在前面就是先加再用*/
+    ///////////////////////////////////////////////////////////
+      tb_width=500*time/3000;
+      get("time_bar").style.width=tb_width+"px";
+      if(sec<10){
+        get("time_bar").style.background="red";
+      }else if(sec<20){
+        get("time_bar").style.background="orange";
+      }
+
+
+    },10);
+  }
+  function stop_timer(){
+    clearInterval(t1);
+  }
+
+  ////////////////
+  function lottery(){
+    var t1=setInterval(function(){
+      get("bignum").innerHTNL=getRnd(1,99);
+    },10);
+    setTimeout(clearInterval,3000,t1);//clrae...，停止
+  }
+
+  function dice(x){
+    var pics=["scissors","stone","paper"];//當檔名不是數字時
+/*		var t1=setInterval(function(){
+      x.src="pic/"+pics(1,3)+".png";
+    },10);
+    setTimeout(clearInterval,3000,t1);
+*/	
+    var y=getRnd(0,2);
+    get("host").src="pic/"+pics[y]+".png"
+    if((x==0 && y==2)||(x==1 && y==0)||(x==2 && y==1)){
+      get("msg").innerHTML=("you WIN!!!");
+    }else if((x==0 && y==0)||(x==1 && y==1)||(x==2 && y==2)){
+      get("msg").innerHTML=("平手!");
+    }else{
+      get("msg").innerHTML=("you LOSE!!!");
+    }
+
+
+
+  }
+
+
+
+  </script>
+  <style>
+    #time_bar{
+      width:500px;
+      height:10px;
+      background:grend;
+      margin-top:10px;
+    }
+
+    #bignum{
+      font-size:120pt;
+      font-family:comic sans Ms;
+    }
+  </style>
+  //span預設就可以跟別人放同一行
+  //this用在只改自己時
+</head>
+
+
+
+<body>
+  <div><span id="time">20</span>秒</div>
+  <button onclick="start_timer();">開始計時</button>
+  <button onclick="stop_timer();">停止計時</button>
+  <div id="time_bar"></div>
+  <hr>
+  <button onclick="lottery();">樂透</button>
+  <div id="bignum">99</div>
+  <hr>
+  <img src="pic/scissors.png" onclick="dice(this);">
+  <img src="pic/stone.png" onclick="dice(this);">
+  <img src="pic/paper.png" onclick="dice(this);">
+  <br>
+  <img id="host" src="pic/paper.png">
+
+
+
+
+</body>
+</html>

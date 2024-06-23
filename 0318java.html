@@ -1,0 +1,100 @@
+<html>
+<head>
+  <style>
+    #msg{
+      font-size:48pt;
+      color:gray;
+      /*定義好字的樣式*/
+    }
+    
+  </style>
+
+  
+  <script>/*Javascript 多行註解*/ //單行 //不用太刻意宣告變數
+    
+//    alert("你好");//一載入就執行(網站還沒跑好時)(寫法不好)
+    
+    function sayHellow(){  //funtion 名稱 () {}
+//    alert("你好");//彈窗
+      
+
+      
+      elm=document.getElementById("msg");
+      elm.innerHTML="你好";
+      //及時改變內容(程式碼)
+      // document.getElementById("msg").innerHTML="你好"; 可以這樣寫
+
+      console.log("100111");//給開發人員記錄 在F12的console會出現
+
+      ans=prompt("你是誰?");//ans(回答)=prompt 
+      console.log(ans);
+      if(confirm("你確定?")){//confirm 對(T)或錯(F)
+        
+      }else{
+        
+      }
+      console.log(ans);
+     }
+
+
+    
+    function get(id){//自訂函式
+      return document.getElementById(id);//return(回傳)
+    }
+    function add(){
+      x=parseInt( get("a1").value);
+      y=parseInt( get("a2").value);
+      //去掉parseInt()會成"字串"連在一起
+      //Int改Float變可輸入小數
+
+      get("ans").value=x+y;
+    }
+    
+
+
+
+
+
+
+
+
+    //input的maxlength=8,輸入長度=8 size=8 框框尺寸
+    //input的mix=最大值 min=最小值 value=預設值
+  </script>
+</head>
+
+<body>
+  <button onclick="sayHellow();">嘿!</button>
+  
+  <div id="msg"></div>
+
+  <input type="text" placeholder="請輸入帳號" maxlength="8 "size="20" value="123ass">
+<br>
+  <input type="password" placeholder="請輸入密碼">
+<br>
+  <input type="number" placeholder="請輸入數字" max=100 min=10>
+<br>
+  
+  <input type="range" max=100 min=10 >
+<br>
+  <input type="date" max="2024-04-31" min="2024-03-15">
+<br>
+  <input type="datetime-local" value="2024-03-25 08:36">
+<br>
+  <input type="color" value="#ffffff">
+<br>
+  <input type="file">
+<br>
+<br>
+<br>
+<br>
+  <input type="number" id="a1">+<input type="number" id="a2">
+  <button onclick="add();">=</button><input type="number" id="ans" readonly>
+  
+
+
+
+
+
+</body>
+</html>

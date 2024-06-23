@@ -1,0 +1,87 @@
+<html>
+<head>
+  <style>
+    #board {
+      width:600px;
+      height:600px;
+      border:3px solid gray;
+      background:url(grass.jpg)/*背景圖片*/
+    }
+
+    #avt1{/*圖片像素/幾格*/
+      width:48px;
+      height:72px;
+      background:url(rpgmaker1.png);/*url是路徑*/
+      background-position-x:-306px;/*往水平方向306*//*只有底圖移動，框框不動*/
+      background-position-y:-216px;
+      //background-position:-306px -216px;/*xy能寫一起*/
+      border:1px solid red;
+    }/*透過背景圖片移動*/
+
+    #avt{/*換方向*/
+      width:48px;
+      height:72px;
+      background:url(rpgmaker1.png);
+      animation:walk 1s steps(3) infinite;/*infinte無限次*/
+//			background-position-y:-580px;
+      position:absolute;
+      left:276px;
+      top:264px;
+      border:1px solid red;
+      }
+    @keyframes walk{
+      0%{background-position-x:0px;}
+      100%{background-position-x:-153px;}/*613/4*/
+    }/*以前是圖形流暢的移動過成(liner)，steps(3)切三步*/
+
+
+
+  </style>
+  <script>
+  var pos={x:276,y:264};/*定義pos.x是276,pos.y是276*/
+  function get(id){
+    return document.getElementById(id);
+  }
+    function mykey(ev){
+      ev.preventDefault();/*把預設的行為關掉*//*把mykey放body,因這行把所有鍵盤事件(F5)失效*/
+      var avtY="0px";
+//			
+
+      if(ev.key == "ArrowDown"){
+        avtY=0;
+        pos.y+=5;
+      }else if(ev.key == "ArrowLeft"){
+        avtY=-72;
+        pos.x-=5;
+      }else if(ev.key == "ArrowRight"){
+        avtY=-144;
+        pos.x+=5;
+      }else if(ev.key == "ArrowUp"){
+        avtY=-216;
+        pos.y-=5;
+      }
+      get("avt").style.backgroundPositionY=avtY+"px";
+      get("avt").style.left=pos.x+"px";
+      get("avt").style.top=pos.y+"px";
+    }
+
+
+//ev.target.value=ev.key;/*案甚麼按鍵放在value上*/
+//<input type="text" id="msg" onkeydown="mykey(enevt);">	
+  </script>
+
+
+</head>
+<body onkeydown="mykey(event);">
+  <div id="board">
+    <div id="avt1"></div>
+    <div id="avt"></div>
+  </div>
+
+
+
+
+
+
+</body>
+</html>
